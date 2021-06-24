@@ -1,18 +1,39 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" @click="showModal">
+      Open Modal!
+    </button>
+   
+    <Modal v-show="isModalVisible" @close="closeModal"></Modal>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Modal from "./components/Modal";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Modal
+  },
+   data() {
+    return {
+      isModalVisible: false,
+    };
+  },
+  methods: {
+    showModal() {
+      // Do something here to determine
+      // if you should show modal
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      // this will catch the close event
+      // after you're done processing the login in the component
+      this.isModalVisible = false;
+    },
+  },
 }
 </script>
 
